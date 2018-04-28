@@ -1,6 +1,5 @@
 'use strict';
 
-// const LinkedList = require('../lib/linked-list');
 const Stack = require('../lib/stack');
 
 describe('Stack.push', () => {
@@ -22,15 +21,14 @@ describe('Stack.pop', () => {
     const stack = new Stack();
     stack.push(1); 
     stack.push(2); 
-    console.log(stack)
     stack.push(3); 
     stack.push(4);
-    stack.pop(); 
-    expect(stack.top.value).toEqual(3);
-    stack.pop(); 
-    expect(stack.top.value).toEqual(2);
-    stack.pop(); 
-    expect(stack.top.value).toEqual(1);
+    expect(stack.pop()).toEqual(4);
+    expect(stack.top).toEqual(3);
+    expect(stack.pop()).toEqual(3);
+    expect(stack.top).toEqual(2);
+    expect(stack.pop()).toEqual(2);
+    expect(stack.top).toEqual(1);
   });
 });
 
@@ -40,12 +38,12 @@ describe('Stack.peek', () => {
     stack.push(1); 
     stack.push(2); 
     stack.push(3); 
-    // stack.push(4);
-    expect(stack.peek()).toEqual(3);
-    // stack.peek(); 
-    // expect(stack.top.value).toEqual(2);
-    // stack.peek(); 
-    // expect(stack.top.value).toEqual(1);
+    stack.push(4);
+    expect(stack.peek()).toEqual(4);
+    stack.pop();
+    expect(stack.peek()).toEqual(3); 
+    stack.pop();
+    expect(stack.peek()).toEqual(2);
   });
 });
 
